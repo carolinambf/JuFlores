@@ -10,26 +10,33 @@ namespace JuFlores.Models
     {
         //dados das fotografias 
 
-        public string nome { get; set; }
+        public string Nome { get; set; }
 
         /// <summary>
         /// Tipo da peça 
         /// </summary>
         [StringLength(20, MinimumLength = 6, ErrorMessage = "O {0} deve estar compreendido entre {1} e {2} caracteres.")]
-        public string tipo { get; set; }
+        public string Tipo { get; set; }
 
 
 
-        public float preco { get; set; }
+        public decimal Preco { get; set; }
 
         /// <summary>
         /// Descrição das peças 
         /// </summary>
         [StringLength(250, MinimumLength = 6, ErrorMessage = "O {0} deve estar compreendido entre {1} e {2} caracteres.")]
-        public string descricao { get; set; }
+        public string Descricao { get; set; }
 
 
-        public int id { get; set; }
+        /// <summary>
+        /// Chave primária 
+        /// </summary>
+        [Key]
+        public int Id { get; set; }
 
+
+        //add fotografias 
+        //
     }
 }

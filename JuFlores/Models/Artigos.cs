@@ -9,17 +9,17 @@ namespace JuFlores.Models
     public class Artigos
     {
         //dados dos artigos 
-        public int id { get; set; }
+        public int Id { get; set; }
 
 
         //nome do Artigos
         [Required(ErrorMessage = "O Nome é de preenchimento obrigatório.")]
-        public string nome { get; set; }
+        public string Nome { get; set; }
 
 
         // Nome do responsável ou criador do artigo 
         [Required(ErrorMessage = "O Nome é de preenchimento obrigatório.")]
-        public string criador { get; set; }
+        public string Criador { get; set; }
 
     }
 }
