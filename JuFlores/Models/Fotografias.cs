@@ -10,7 +10,7 @@ namespace JuFlores.Models
         //Dados das fotografias 
         public string Fotografia { get; set; }
         //Data upload foto 
-        public DateTime date { get; set; }
-        public int id { get; set; }
+        public DateTime Date { get; set; }
+        public int Id { get; set; }
     }
 }
