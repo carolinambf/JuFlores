@@ -6,6 +6,7 @@
     <title>@ViewData["Title"] - JuFlores</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
     <header>
@@ -38,12 +39,88 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2021 - JuFlores 
+            &copy; 2021 - JuFlores
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
+
+    <section id="about">
+        <div class="container">
+            <div class="row about-container">
+
+                <div class="col-lg-6 content order-lg-1 order-2">
+                    <h2 class="title"> Contacta comigo  </h2>
+                    <p> Vêm conhecer-me! </p>
+                    <p> Entra em contacto para saberes mais informações </p>
+                    <div class="icon-box wow fadeInUp">
+                        <div class="icon"><i class="fa fa-map-marker" style="font-size:24px"></i></div>
+                        <h4 class="title">Morada</h4>
+                        <p class="description"> Largo do Rossio, Atalaia, Vila Nova da Barquinha </p>
+                    </div>
+
+                    <div class="icon-box wow fadeInUp">
+                        <div class="icon"><i class="fa fa-phone" style="font-size:24px"></i></div>
+                        <h4 class="title">Contacto Telefónico  </h4>
+                        <p class="description"> 969 *** ***</p>
+                    </div>
+
+                    <div class="icon-box wow fadeInUp">
+                        <div class="icon"><i class="fa fa-instagram" style="font-size:24px"></i></div>
+                        <h4 class="title"> Instagram</h4> 
+                        <p class="description"> juflores.atalaia </p>
+                    </div>
+
+                </div>
+
+                <div class="col-lg-6 background order-lg-2 order-1 wow fadeInRight">
+                    <img src="~/images/flores.jpg" width="600" height="600"   >
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+    <section id="team">
+        <div class="container wow fadeInUp">
+            <div class="section-header">
+                <h3 class="section-title">Novidades</h3>
+                <p class="section-description"></p>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <div class="member">
+                        <div class="pic"><img src="~/images/nov1.jpg" alt=""></div>
+                        <h4> Para Ocasiões Especiais </h4>
+                        <span> Preço: *€ </span>
+                    </div> 
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="member">
+                        <div class="pic"><img src="~/images/nov2.jpg" alt=""></div>
+                        <h4> Rosas</h4>
+                        <span> Preço: *€ </span>  
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="member">
+                        <div class="pic"><img src="~/images/nov3.jpg" alt=""></div>
+                        <h4>Flores Artificiais</h4> 
+                        <span>Preço: *€</span>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="member">
+                        <div class="pic"><img src="~/images/nov4.jpg" alt=""></div>
+                        <h4>Para Homenagear Alguém </h4>
+                        <span>Preço: *€</span> 
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
 </body>
 </html>
