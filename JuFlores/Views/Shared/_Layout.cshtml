@@ -10,6 +10,46 @@
 </head>
 <body>
     <header>
+        <style>
+
+
+            /* Style inputs */
+            input[type=text], select, textarea {
+                width: 100%;
+                padding: 12px;
+                border: 1px solid #ccc;
+                margin-top: 6px;
+                margin-bottom: 16px;
+                resize: vertical;
+            }
+
+            input[type=submit] {
+                background-color: #04AA6D;
+                color: white;
+                padding: 12px 20px;
+                border: none;
+                cursor: pointer;
+            }
+
+
+
+            /* Style the container/contact section */
+
+            /* Create two columns that float next to eachother */
+            .column {
+                float: left;
+                width: 50%;
+                margin-top: 6px;
+                padding: 20px;
+            }
+
+            /* Clear floats after the columns */
+            .row:after {
+                content: "";
+                display: table;
+                clear: both;
+            }
+        </style>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">  <img src="~/images/nome.jpg" width="150" height="50"></a>
@@ -52,7 +92,7 @@
             <div class="row about-container">
 
                 <div class="col-lg-6 content order-lg-1 order-2">
-                    <h2 class="title"> Contacta comigo  </h2>
+                    <h2 class="title"> Contacte-me   </h2>
                     <p> Vêm conhecer-me! </p>
                     <p> Entra em contacto para saberes mais informações </p>
                     <div class="icon-box wow fadeInUp">
@@ -69,17 +109,40 @@
 
                     <div class="icon-box wow fadeInUp">
                         <div class="icon"><i class="fa fa-instagram" style="font-size:24px"></i></div>
-                        <h4 class="title"> Instagram</h4> 
+                        <h4 class="title"> Instagram</h4>
                         <p class="description"> juflores.atalaia </p>
                     </div>
 
                 </div>
 
                 <div class="col-lg-6 background order-lg-2 order-1 wow fadeInRight">
-                    <img src="~/images/flores.jpg" width="600" height="600"   >
+                    <img src="~/images/flores.jpg" width="600" height="600">
                 </div>
 
             </div>
+            <section>
+
+                <div>
+
+                    <div>
+                        <h2> Esclareça aqui as suas dúvidas  </h2>
+                        <div>
+                            <form>
+                                <label for="fname">Primeiro Nome</label>
+                                <input type="text" id="fname" name="firstname" placeholder="Insere aqui o teu nome... ">
+                                <label for="lname"> Último Nome </label>
+                                <input type="text" id="lname" name="lastname" placeholder="Insere aqui o teu último nome...">
+                                <label for="country">Telemóvel</label>
+                                <input type="text" id="lname" name="lastname" placeholder="Insere aqui o teu contacto...">
+                                <label for="subject">Assunto</label>
+                                <textarea id="subject" name="subject" placeholder="Escreva aqui..." style="height:170px"></textarea>
+                                <input type="submit" value="Submit">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
 
         </div>
     </section>
