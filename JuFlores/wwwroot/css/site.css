@@ -24,337 +24,393 @@ a {
   border-color: #1861ac;
 }
 
-/* Sticky footer styles
+/*Side Bar */
+
+/*.sidebar {
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    background-color: #fff;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+}
+
+    .sidebar a {
+        display: block;
+        color: black;
+        padding: 16px;
+        text-decoration: none;
+    }
+
+        .sidebar a.active {
+            background-color: #04AA6D;
+            color: white;
+        }
+
+        .sidebar a:hover:not(.active) {
+            background-color: #F0FFF0;
+            color: black;
+        }
+
+div.content {
+    margin-left: 200px;
+    padding: 1px 16px;
+    height: 1000px;
+}
+
+@media screen and (max-width: 700px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
+
+        .sidebar a {
+            float: left;
+        }
+
+    div.content {
+        margin-left: 0;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .sidebar a {
+        text-align: center;
+        float: none;*/
+    }
+    /* Sticky footer styles
 -------------------------------------------------- */
-html {
-  font-size: 14px;
-}
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
+    html {
+        font-size: 14px;
+        font-family: Candara;
+    }
 
-.border-top {
-    border-top: 1px solid #95E4DB;
-}
-.border-bottom {
-    border-bottom: 1px solid #95E4DB;
-}
+    @media (min-width: 768px) {
+        html {
+            font-family: Candara;
+            font-size: 16px;
+        }
+    }
 
-.box-shadow {
-  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
-}
+    .border-top {
+        border-top: 1px solid #95E4DB;
+    }
 
-button.accept-policy {
-  font-size: 1rem;
-  line-height: inherit;
-}
+    .border-bottom {
+        border-bottom: 1px solid #95E4DB;
+    }
 
-/* Sticky footer styles
+    .box-shadow {
+        box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+    }
+
+    button.accept-policy {
+        font-size: 1rem;
+        line-height: inherit;
+    }
+
+    /* Sticky footer styles
 -------------------------------------------------- */
-html {
-  position: relative;
-  min-height: 100%;
-}
-
-body {
-    /* Margin bottom by footer height */
-    margin-bottom: 60px;
-    background: #F0FFF0
-}
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  line-height: 60px; /* Vertically center the text there */
-
-}
-
-/* home page */
-#hero .hero-container {
-      position: absolute;
-    bottom: 0;
-    top: 0;
-    left: 0;
-    right: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    text-align: center;
-}
-
-#hero {
-    width: 100%;
-    height: 70vh;
-    background: url(../images/logo.jpg) top center ;
-    
-    background-size: cover;
-    position: relative;
-
-}
-
-@media (min-width: 1024px) {
-    #hero {
-        background-attachment: fixed;
-    }
-}
-
-#hero:before {
-    content: "";
-    background: rgba(0, 0, 0, 0.6);
-    position: absolute;
-    bottom: 0;
-    top: 0;
-    left: 0;
-    right: 0;
-}
-
-#hero .hero-container {
-    position: absolute;
-    bottom: 0;
-    top: 0;
-    left: 0;
-    right: 0;
-    display: flex; 
-    
-    
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    text-align: center;
-}
-
-#hero h1 {
-    margin: 30px 0 10px 0;
-    font-size: 48px;
-    font-weight: 700;
-    line-height: 56px;
-    text-transform: uppercase;
-    color: #fff;
-}
-
-@media (max-width: 768px) {
-    #hero h1 {
-        font-size: 28px;
-        line-height: 36px;
-    }
-}
-
-#hero h2 {
-    color: #eee;
-    margin-bottom: 50px;
-    font-size: 24px;
-}
-
-@media (max-width: 768px) {
-    #hero h2 {
-        font-size: 18px;
-        line-height: 24px;
-        margin-bottom: 30px;
-    }
-}
-
-
-#about {
-    background: #fff;
-    padding: 83px 0 
-}
-
-    #about .about-container .content {
-        background: #fff;
+    html {
+        position: relative;
+        min-height: 100%;
     }
 
-    #about .about-container .title {
-        color: #333;
-        font-weight: 700;
-        font-size: 32px;
+    body {
+        /* Margin bottom by footer height */
+        margin-bottom: 60px;
+        background: #F0FFF0
     }
 
-@media (max-width: 768px) {
-    #about .about-container .title {
-        padding-top: 15px;
-    }
-}
-
-#about .about-container p {
-    line-height: 26px;
-}
-
-    #about .about-container p:last-child {
-        margin-bottom: 0;
+    .footer {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        white-space: nowrap;
+        line-height: 60px; /* Vertically center the text there */
     }
 
-#about .about-container .icon-box {
-    background: #fff;
-    background-size: cover;
-    padding: 0 0 30px 0;
-}
-
-    #about .about-container .icon-box .icon {
-        float: left;
-        background: #fff;
-        width: 64px;
-        height: 64px;
+    /* home page */
+    #hero .hero-container {
+        position: absolute;
+        bottom: 0;
+        top: 0;
+        left: 0;
+        right: 0;
         display: flex;
         justify-content: center;
         align-items: center;
         flex-direction: column;
         text-align: center;
-        border-radius: 50%;
-        border: 2px solid #2dc997;
     }
 
-        #about .about-container .icon-box .icon i {
-            color: #2dc997;
-            font-size: 24px;
-        }
+    #hero {
+        width: 100%;
+        height: 70vh;
+        background: url(../images/logo.jpg) top center;
+        background-size: cover;
+        position: relative;
+    }
 
-    #about .about-container .icon-box .title {
-        margin-left: 80px;
-        font-weight: 500;
-        margin-bottom: 5px;
-        font-size: 18px;
+    @media (min-width: 1024px) {
+        #hero {
+            background-attachment: fixed;
+        }
+    }
+
+    #hero:before {
+        content: "";
+        background: rgba(0, 0, 0, 0.6);
+        position: absolute;
+        bottom: 0;
+        top: 0;
+        left: 0;
+        right: 0;
+    }
+
+    #hero .hero-container {
+        position: absolute;
+        bottom: 0;
+        top: 0;
+        left: 0;
+        right: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    #hero h1 {
+        font-family: Candara;
+        margin: 30px 0 10px 0;
+        font-size: 48px;
+        font-weight: 700;
+        line-height: 56px;
         text-transform: uppercase;
+        color: #fff;
     }
 
-        #about .about-container .icon-box .title a {
-            color: #111;
+    @media (max-width: 768px) {
+        #hero h1 {
+            font-family: Candara;
+            font-size: 28px;
+            line-height: 36px;
+        }
+    }
+
+    #hero h2 {
+        font-family: Candara;
+        color: #eee;
+        margin-bottom: 50px;
+        font-size: 24px;
+    }
+
+    @media (max-width: 768px) {
+        #hero h2 {
+            font-family: Candara;
+            font-size: 18px;
+            line-height: 24px;
+            margin-bottom: 30px;
+        }
+    }
+
+
+    #about {
+        background: #fff;
+        padding: 83px 0
+    }
+
+        #about .about-container .content {
+            background: #fff;
         }
 
-    #about .about-container .icon-box .description {
-        margin-left: 80px;
-        line-height: 24px;
-        font-size: 14px;
+        #about .about-container .title {
+            color: #333;
+            font-family: Candara;
+            font-weight: 700;
+            font-size: 32px;
+        }
+
+    @media (max-width: 768px) {
+        #about .about-container .title {
+            padding-top: 15px;
+        }
     }
+
+    #about .about-container p {
+        line-height: 26px;
+    }
+
+        #about .about-container p:last-child {
+            margin-bottom: 0;
+        }
+
+    #about .about-container .icon-box {
+        background: #fff;
+        background-size: cover;
+        padding: 0 0 30px 0;
+    }
+
+        #about .about-container .icon-box .icon {
+            float: left;
+            background: #fff;
+            width: 64px;
+            height: 64px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+            border-radius: 50%;
+            border: 2px solid #2dc997;
+        }
+
+            #about .about-container .icon-box .icon i {
+                color: #2dc997;
+                font-family: Candara;
+                font-size: 24px;
+            }
+
+        #about .about-container .icon-box .title {
+            margin-left: 80px;
+            font-weight: 500;
+            margin-bottom: 5px;
+            font-size: 18px;
+            font-family: Candara;
+            text-transform: uppercase;
+        }
+
+            #about .about-container .icon-box .title a {
+                color: #111;
+            }
+
+        #about .about-container .icon-box .description {
+            margin-left: 80px;
+            line-height: 24px;
+            font-size: 14px;
+            font-family: Candara;
+        }
 
     #team {
-    text-align: center;
-    background: #fff;
-    padding: 70px 0; 
-}
-
-#team .member {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-    #team .member .pic {
-        margin-bottom: 15px;
-        overflow: hidden; 
-        height: 380px;
+        text-align: center;
+        background: #fff;
+        padding: 70px 0;
     }
 
-        #team .member .pic img {
-            max-width: 100%;
+        #team .member {
+            text-align: center;
+            margin-bottom: 20px;
         }
 
-    #team .member h4 {
-        font-weight: 700;
-        margin-bottom: 2px;
-        font-size: 18px;
+            #team .member .pic {
+                margin-bottom: 15px;
+                overflow: hidden;
+                height: 380px;
+            }
+
+                #team .member .pic img {
+                    max-width: 100%;
+                }
+
+            #team .member h4 {
+                font-weight: 700;
+                margin-bottom: 2px;
+                font-size: 18px;
+                font-family: Candara;
+            }
+
+            #team .member span {
+                font-style: italic;
+                display: block;
+                font-size: 13px;
+                font-family: Candara;
+            }
+
+            #team .member .social {
+                margin-top: 15px;
+            }
+
+                #team .member .social a {
+                    color: #b3b3b3;
+                }
+
+                    #team .member .social a:hover {
+                        color: #2dc997;
+                    }
+
+                #team .member .social i {
+                    font-size: 18px;
+                    font-family: Candara;
+                    margin: 0 2px;
+                }
+
+
+
+    /* About page */
+    .about-section {
+        background: url(../images/horario.jpg) no-repeat left;
+        background-size: 55%;
+        background-color: #fdfdfd;
+        overflow: hidden;
+        padding: 100px 0;
     }
 
-    #team .member span {
-        font-style: italic;
-        display: block;
+    .inner-container {
+        width: 55%;
+        float: right;
+        background-color: #fdfdfd;
+        padding: 150px;
+    }
+
+        .inner-container h1 {
+            font-family: Candara;
+            margin-bottom: 30px;
+            font-size: 30px;
+            font-weight: 900;
+        }
+
+    .text {
+        font-family: Candara;
+        font-size: 13px;
+        color: #545454;
+        line-height: 30px;
+        text-align: justify;
+        margin-bottom: 40px;
+    }
+
+    .skills {
+        display: flex;
+        justify-content: space-between;
+        font-weight: 700;
         font-size: 13px;
     }
 
-    #team .member .social {
-        margin-top: 15px;
+    @media screen and (max-width:1200px) {
+        .inner-container {
+            padding: 80px;
+        }
     }
 
-        #team .member .social a {
-            color: #b3b3b3;
+    @media screen and (max-width:1000px) {
+        .about-section {
+            background-size: 100%;
+            padding: 100px 40px;
         }
 
-            #team .member .social a:hover {
-                color: #2dc997;
-            }
+        .inner-container {
+            width: 100%;
+        }
+    }
 
-        #team .member .social i {
-            font-size: 18px;
-            margin: 0 2px;
+    @media screen and (max-width:600px) {
+        .about-section {
+            padding: 0;
         }
 
-/* Pagina Sobre Nos
--------------------------------------------------- 
-     {
-    margin: 0;
-    padding: 0;
-    font-family: "Open Sans",sans-serif;
-    box-sizing: border-box;
-}
-
-body{
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #f1f1f1;
-}
-
-.about-section{
-    background: url(pic.jpg) no-repeat left;
-    background-size: 55%;
-    background-color: #fdfdfd;
-    overflow: hidden;
-    padding: 100px 0;
-}
-
-.inner-container{
-    width: 55%;
-    float: right;
-    background-color: #fdfdfd;
-    padding: 150px;
-}
-
-.inner-container h1{
-    margin-bottom: 30px;
-    font-size: 30px;
-    font-weight: 900;
-}
-
-.text{
-    font-size: 13px;
-    color: #545454;
-    line-height: 30px;
-    text-align: justify;
-    margin-bottom: 40px;
-}
-
-.skills{
-    display: flex;
-    justify-content: space-between;
-    font-weight: 700;
-    font-size: 13px;
-}
-
-@media screen and (max-width:1200px){
-    .inner-container{
-        padding: 80px;
+        .inner-container {
+            padding: 60px;
+        }
     }
-}
-
-@media screen and (max-width:1000px){
-    .about-section{
-        background-size: 100%;
-        padding: 100px 40px;
-    }
-    .inner-container{
-        width: 100%;
-    }
-}
-
-@media screen and (max-width:600px){
-    .about-section{
-        padding: 0;
-    }
-    .inner-container{
-        padding: 60px;
-    }
-}
-*/

@@ -11,9 +11,7 @@
 <body>
     <header>
         <style>
-
-
-            /* Style inputs */
+            /* Form Style */
             input[type=text], select, textarea {
                 width: 100%;
                 padding: 12px;
@@ -31,11 +29,6 @@
                 cursor: pointer;
             }
 
-
-
-            /* Style the container/contact section */
-
-            /* Create two columns that float next to eachother */
             .column {
                 float: left;
                 width: 50%;
@@ -43,7 +36,6 @@
                 padding: 20px;
             }
 
-            /* Clear floats after the columns */
             .row:after {
                 content: "";
                 display: table;
@@ -60,18 +52,23 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Início</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy"> Sobre Nós </a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy"> Sobre a Loja </a>
                         </li>
                     </ul>
-                   
-                        <partial name="_LoginPartial" />
-                    </div>
+
+                    <partial name="_LoginPartial" />
                 </div>
+            </div>
         </nav>
+
+        @*<div class="sidebar">
+            <a href="#">Categorias</a>
+            <a href="#">Favoritos</a>
+        </div>*@
+
+
     </header>
+
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
@@ -147,6 +144,6 @@
 
         </div>
     </section>
-   
+
 </body>
 </html>
