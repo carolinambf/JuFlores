@@ -85,65 +85,61 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 
-    <section id="about">
-        <div class="container">
-            <div class="row about-container">
+<section id="about">
+    <div class="container">
+        <div class="row about-container">
 
-                <div class="col-lg-6 content order-lg-1 order-2">
-                    <h2 class="title"> Contacte-me   </h2>
-                    <p> Vêm conhecer-me! </p>
-                    <p> Entra em contacto para saberes mais informações </p>
-                    <div class="icon-box wow fadeInUp">
-                        <div class="icon"><i class="fa fa-map-marker" style="font-size:24px"></i></div>
-                        <h4 class="title">Morada</h4>
-                        <p class="description"> Largo do Rossio, Atalaia, Vila Nova da Barquinha </p>
-                    </div>
-
-                    <div class="icon-box wow fadeInUp">
-                        <div class="icon"><i class="fa fa-phone" style="font-size:24px"></i></div>
-                        <h4 class="title">Contacto Telefónico  </h4>
-                        <p class="description"> 969 *** ***</p>
-                    </div>
-
-                    <div class="icon-box wow fadeInUp">
-                        <div class="icon"><i class="fa fa-instagram" style="font-size:24px"></i></div>
-                        <h4 class="title"> Instagram</h4>
-                        <p class="description"> juflores.atalaia </p>
-                    </div>
-
+            <div class="col-lg-6 content order-lg-1 order-2">
+                <h2 class="title"> Contacte-me   </h2>
+                <p> Vêm conhecer-me! </p>
+                <p> Entra em contacto para saberes mais informações </p>
+                <div class="icon-box wow fadeInUp">
+                    <div class="icon"><i class="fa fa-map-marker" style="font-size:24px"></i></div>
+                    <h4 class="title">Morada</h4>
+                    <p class="description"> Largo do Rossio, Atalaia, Vila Nova da Barquinha </p>
                 </div>
 
-                <div class="col-lg-6 background order-lg-2 order-1 wow fadeInRight">
-                    <img src="~/images/flores.jpg" width="600" height="600">
+                <div class="icon-box wow fadeInUp">
+                    <div class="icon"><i class="fa fa-phone" style="font-size:24px"></i></div>
+                    <h4 class="title">Contacto Telefónico  </h4>
+                    <p class="description"> 969 *** ***</p>
+                </div>
+
+                <div class="icon-box wow fadeInUp">
+                    <div class="icon"><i class="fa fa-instagram" style="font-size:24px"></i></div>
+                    <h4 class="title"> Instagram</h4>
+                    <p class="description"> juflores.atalaia </p>
                 </div>
 
             </div>
-            <section>
 
-                <div>
+            <div class="col-lg-6 background order-lg-2 order-1 wow fadeInRight">
+                <img src="~/images/flores.jpg" width="600" height="600">
 
-                    <div>
-                        <h2> Esclareça aqui as suas dúvidas  </h2>
-                        <div>
-                            <form>
-                                <label for="fname">Primeiro Nome</label>
-                                <input type="text" id="fname" name="firstname" placeholder="Insere aqui o teu nome... ">
-                                <label for="lname"> Último Nome </label>
-                                <input type="text" id="lname" name="lastname" placeholder="Insere aqui o teu último nome...">
-                                <label for="country">Telemóvel</label>
-                                <input type="text" id="lname" name="lastname" placeholder="Insere aqui o teu contacto...">
-                                <label for="subject">Assunto</label>
-                                <textarea id="subject" name="subject" placeholder="Escreva aqui..." style="height:170px"></textarea>
-                                <input type="submit" value="Submit">
-                            </form>
-                        </div>
-                    </div>
-                </div>
-
-            </section>
-
+            </div>
         </div>
-    </section>
+    </div>
+</section>
+
+<section>
+    <div>
+    <h3> Esclareça aqui as suas dúvidas  </h3>
+    </div>
+     <div>
+    <form>
+        <label for="fname">Primeiro Nome</label>
+        <input type="text" id="fname" name="firstname" placeholder="Insere aqui o teu nome... ">
+        <label for="lname"> Último Nome </label>
+        <input type="text" id="lname" name="lastname" placeholder="Insere aqui o teu último nome...">
+        <label for="country">Telemóvel</label>
+        <input type="text" id="lname" name="lastname" placeholder="Insere aqui o teu contacto...">
+        <label for="subject">Assunto</label>
+        <textarea id="subject" name="subject" placeholder="Escreva aqui..." style="height:170px"></textarea>
+        <input type="submit" value="Submit">
+    </form>
+    </div>
+</section>
+      
 
 </body>
 </html>
