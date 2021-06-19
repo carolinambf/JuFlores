@@ -10,38 +10,7 @@
 </head>
 <body>
     <header>
-        <style>
-            /* Form Style */
-            input[type=text], select, textarea {
-                width: 100%;
-                padding: 12px;
-                border: 1px solid #ccc;
-                margin-top: 6px;
-                margin-bottom: 16px;
-                resize: vertical;
-            }
-
-            input[type=submit] {
-                background-color: #04AA6D;
-                color: white;
-                padding: 12px 20px;
-                border: none;
-                cursor: pointer;
-            }
-
-            .column {
-                float: left;
-                width: 50%;
-                margin-top: 6px;
-                padding: 20px;
-            }
-
-            .row:after {
-                content: "";
-                display: table;
-                clear: both;
-            }
-        </style>
+       
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">  <img src="~/images/nome.jpg" width="150" height="50"></a>
@@ -121,25 +90,7 @@
     </div>
 </section>
 
-<section>
-    <div>
-    <h3> Esclareça aqui as suas dúvidas  </h3>
-    </div>
-     <div>
-    <form>
-        <label for="fname">Primeiro Nome</label>
-        <input type="text" id="fname" name="firstname" placeholder="Insere aqui o teu nome... ">
-        <label for="lname"> Último Nome </label>
-        <input type="text" id="lname" name="lastname" placeholder="Insere aqui o teu último nome...">
-        <label for="country">Telemóvel</label>
-        <input type="text" id="lname" name="lastname" placeholder="Insere aqui o teu contacto...">
-        <label for="subject">Assunto</label>
-        <textarea id="subject" name="subject" placeholder="Escreva aqui..." style="height:170px"></textarea>
-        <input type="submit" value="Submit">
-    </form>
-    </div>
-</section>
-      
+
 
 </body>
 </html>
