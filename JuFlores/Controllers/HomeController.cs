@@ -27,7 +27,10 @@ namespace JuFlores.Controllers
         {
             return View();
         }
-
+        public IActionResult Categorias()
+        {
+            return View();
+        }
         public IActionResult Trabalhos()
         {
             return View();
