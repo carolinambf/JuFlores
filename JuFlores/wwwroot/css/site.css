@@ -351,7 +351,7 @@ div.content {
 
     /* About page */
     .about-section {
-        background: url(../images/horario.jpg) no-repeat left;
+        background: url(../images/horario2.jpg) no-repeat left;
         background-size: 55%;
         background-color: #fdfdfd;
         overflow: hidden;
@@ -368,13 +368,13 @@ div.content {
         .inner-container h1 {
             font-family: Candara;
             margin-bottom: 30px;
-            font-size: 30px;
+            font-size: 50px;
             font-weight: 900;
         }
 
     .text {
         font-family: Candara;
-        font-size: 13px;
+        font-size: 20px;
         color: #545454;
         line-height: 30px;
         text-align: justify;
