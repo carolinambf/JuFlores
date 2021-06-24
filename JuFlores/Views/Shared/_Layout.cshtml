@@ -10,7 +10,7 @@
 </head>
 <body>
     <header>
-       
+
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">  <img src="~/images/nome.jpg" width="150" height="50"></a>
@@ -29,6 +29,9 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Categorias"> Categorias </a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Assistente"> Assistente Virtual </a>
+                        </li>
                     </ul>
 
                     <partial name="_LoginPartial" />
@@ -37,9 +40,9 @@
         </nav>
 
         @*<div class="sidebar">
-            <a href="#">Categorias</a>
-            <a href="#">Favoritos</a>
-        </div>*@
+                <a href="#">Categorias</a>
+                <a href="#">Favoritos</a>
+            </div>*@
 
 
     </header>
@@ -60,41 +63,42 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 
-<section id="about">
-    <div class="container">
-        <div class="row about-container">
+    <section id="about">
+        <div class="container">
+            <div class="row about-container">
 
-            <div class="col-lg-6 content order-lg-1 order-2">       @*PORQUE É QUE OS ICONS NÃO APARECEM?*@ 
-                <h2 class="title"> Contacte-me   </h2>
-                <p> Vêm conhecer-me! </p>
-                <p> Entra em contacto para saberes mais informações </p>
-                <div class="icon-box wow fadeInUp">
-                    <div class="icon"><i class="fa fa-map-marker" style="font-size:24px"></i></div>
-                    <h4 class="title">Morada</h4>
-                    <p class="description"> Largo do Rossio, Atalaia, Vila Nova da Barquinha </p>
+                <div class="col-lg-6 content order-lg-1 order-2">
+                    @*PORQUE É QUE OS ICONS NÃO APARECEM?*@
+                    <h2 class="title"> Contacte-me   </h2>
+                    <p> Vêm conhecer-me! </p>
+                    <p> Entra em contacto para saberes mais informações </p>
+                    <div class="icon-box wow fadeInUp">
+                        <div class="icon"><i class="fa fa-map-marker" style="font-size:24px"></i></div>
+                        <h4 class="title">Morada</h4>
+                        <p class="description"> Largo do Rossio, Atalaia, Vila Nova da Barquinha </p>
+                    </div>
+
+                    <div class="icon-box wow fadeInUp">
+                        <div class="icon"><i class="fa fa-phone" style="font-size:24px"></i></div>
+                        <h4 class="title">Contacto Telefónico  </h4>
+                        <p class="description"> 969 *** ***</p>
+                    </div>
+
+                    <div class="icon-box wow fadeInUp">
+                        <div class="icon"><i class="fa fa-instagram" style="font-size:24px"></i></div>
+                        <h4 class="title"> Instagram</h4>
+                        <p class="description"> juflores.atalaia </p>
+                    </div>
+
                 </div>
 
-                <div class="icon-box wow fadeInUp">
-                    <div class="icon"><i class="fa fa-phone" style="font-size:24px"></i></div>
-                    <h4 class="title">Contacto Telefónico  </h4>
-                    <p class="description"> 969 *** ***</p>
+                <div class="col-lg-6 background order-lg-2 order-1 wow fadeInRight">
+                    <img src="~/images/flores.jpg" width="600" height="600">
+
                 </div>
-
-                <div class="icon-box wow fadeInUp">
-                    <div class="icon"><i class="fa fa-instagram" style="font-size:24px"></i></div>
-                    <h4 class="title"> Instagram</h4>
-                    <p class="description"> juflores.atalaia </p>
-                </div>
-
-            </div>
-
-            <div class="col-lg-6 background order-lg-2 order-1 wow fadeInRight">
-                <img src="~/images/flores.jpg" width="600" height="600">
-
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
 
 
