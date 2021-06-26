@@ -7,7 +7,62 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+        /* Button used to open the chat form - fixed at the bottom of the page */
+
+        .open-button {
+            background-color: transparent;
+            color: white;
+            border: none;
+            cursor: pointer;
+            opacity: 1;
+            position: fixed;
+            bottom: 70px;
+            right: 28px;
+            width: 100px;
+            padding-right:160px;
+        }
+
+        .closePopUp {
+            display: block;
+            position: fixed;
+            bottom: 625px;
+            right: 50px;
+            z-index: 99;
+            width: 30px;
+            height: 100px;
+            background-color: transparent;
+            color: #006400;
+            border: none;
+        }
+
+        /* The popup chat - hidden by default */
+        .chat-popup {
+            display: none;
+            position: fixed;
+            bottom: 65px;
+            right: 15px;
+            z-index: 9;
+            height: 600px;
+        }
+
+     
+        #webchat {
+            position: fixed;
+            height: 600px;
+            width: 350px;
+            bottom: 65px;
+            right: 15px;
+            z-index: 9;
+            border: 1px solid #006400
+        }
+    </style>
+    <script src="https://cdn.botframework.com/botframework-webchat/latest/webchat.js"></script>
+
+
 </head>
+
 <body>
     <header>
 
@@ -29,9 +84,7 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Categorias"> Categorias </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Assistente"> Assistente Virtual </a>
-                        </li>
+                        
                     </ul>
 
                     <partial name="_LoginPartial" />
@@ -99,6 +152,92 @@
             </div>
         </div>
     </section>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script>
+        function openForm() {
+            document.getElementById("myForm").style.display = "block"; //função para abrir o chat bot
+        }
+        function closeForm() {
+            document.getElementById("myForm").style.display = "none"; //função para fechar o chat bot
+        }
+    </script>
+    <button onclick="openForm()" class="open-button"><img src="~/images/bot.png" /></button>--> @*botão com a mascote do IPT para abrir*@
+    <div id="myForm" class="chat-popup">-->
+        @* form onde está o chatbot *@
+        <div>
+            <div id="webchat" role="main"></div>
+        </div>
+        <div id="myForm" class="chat-popup">
+
+            <script>
+
+                const styleOptions = {   //personalização do chatBot
+                    // Add styleOptions to customize web chat canvas
+                    hideUploadButton: true,
+                    botAvatarInitials: 'BT',
+                    accent: '#00809d',
+                    botAvatarBackgroundColor: "#F0FFF0",
+                    botAvatarImage: 'https://thumbs.dreamstime.com/b/%C3%ADcone-dos-desenhos-animados-da-mulher-projeto-da-pessoa-gr%C3%A1fico-de-vetor-73696512.jpg',
+                    backgroundColor: "#e3f8e3",
+
+                };
+
+                // Add your BOT ID below
+                var BOT_ID = "655009a1-93e0-40bf-aabd-758d31530853";
+
+                var theURL = "https://powerva.microsoft.com/api/botmanagement/v1/directline/directlinetoken?botId=" + BOT_ID;
+
+                const store = window.WebChat.createStore(
+                    {},
+                    ({ dispatch }) => next => action => {
+                        if (action.type === "DIRECT_LINE/CONNECT_FULFILLED") {
+                            dispatch({
+                                meta: {
+                                    method: "keyboard",
+                                },
+                                payload: {
+                                    activity: {
+                                        channelData: {
+                                            postBack: true,
+                                        },
+                                        //Web Chat will show the 'Greeting' System Topic message which has a trigger-phrase 'hello'
+                                        name: 'startConversation',
+                                        type: "event"
+                                    },
+                                },
+                                type: "DIRECT_LINE/POST_ACTIVITY",
+                            });
+                        }
+                        return next(action);
+                    }
+                );
+                fetch(theURL)
+                    .then(response => response.json())
+                    .then(conversationInfo => {
+                        window.WebChat.renderWebChat(
+                            {
+                                directLine: window.WebChat.createDirectLine({
+                                    token: conversationInfo.token,
+                                }),
+                                store: store,
+                                styleOptions: styleOptions
+                            },
+                            document.getElementById('webchat')
+                        );
+                    })
+                    .catch(err => console.error("An error occurred: " + err));
+
+
+            </script>
+
+        </div>
+
+        <div>
+            <button onclick="closeForm()" class="closePopUp">Fechar</button>
+        </div>
+    </div>
 
 
 
