@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -8,6 +9,21 @@ namespace JuFlores.Models
 {
     public class Pecas
     {
+        public Pecas()
+        {
+        }
+
+        public Pecas(string nome, string tipo, decimal preco, string descricao, int id, ICollection<Fotografias> listaDeFotografias)
+        {
+            Nome = nome;
+            Tipo = tipo;
+            Preco = preco;
+            Descricao = descricao;
+            Id = id;
+            ListaDeFotografias = listaDeFotografias;
+        }
+
+
         //dados das fotografias 
 
         public string Nome { get; set; }
@@ -19,7 +35,7 @@ namespace JuFlores.Models
         public string Tipo { get; set; }
 
 
-
+        [Column(TypeName = "decimal(18,2)")]
         public decimal Preco { get; set; }
 
         /// <summary>
@@ -37,6 +53,7 @@ namespace JuFlores.Models
 
 
         //add fotografias 
+        public ICollection<Fotografias> ListaDeFotografias { get; set; } = new List<Fotografias>();
         //
     }
 }

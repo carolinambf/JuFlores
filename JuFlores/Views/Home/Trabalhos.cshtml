@@ -3,66 +3,32 @@
 }
 <link rel="stylesheet" href="~/css/site.css" />
 
-@*Página de últimos trabalhos*@
+
+
+@model Artigos
+
+<h1>Últimos Trabalhos</h1>
+
 <section id="team">
     <div class="container wow fadeInUp">
         <div class="section-header">
             <h3 class="section-title"> Últimos Trabalhos... </h3>
             <p class="section-description"> Alguns dos meus últimos trabalhos, para todos os gostos ♥ </p>
         </div>
-
-        <div class="row">
+        </div>
+    <div class="row">
+        @foreach (Artigos artigo in ViewBag.Artigos)
+        {
+            IEnumerable<Favoritos> artigosFavoritos = ViewBag.ArtigosFavoritos;
             <div class="col-lg-3 col-md-6">
                 <div class="member">
                     <div class="pic"><img src="~/images/oca1.jpg" alt="" style="border-radius: 10%"></div>
-                    <a asp-area="" asp-controller="Home" asp-action="Favoritos">  <i class="fa fa-star" aria-hidden="true"></i>  </a>
+                    <h5><a asp-controller="Artigos" asp-action="Details" asp-route-id="@artigo.Id">@artigo.Nome</a></h5>
+                    <form asp-action="Toggle" asp-controller="Favoritos" asp-route-id=@artigo.Id>
+                        <button type="submit" value="Fav" style="padding: 0; border: none; background: none;"><i class="fa @(artigosFavoritos.Any(current => current.ArtigoFK == artigo.Id) ? "fa-star" : "fa-star-o")" aria-hidden="true"></i></button>
+                    </form>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="member">
-                    <div class="pic"><img src="~/images/oca2.jpg" alt="" style="border-radius: 10%"></div>
-                    <a asp-area="" asp-controller="Home" asp-action="Favoritos">  <i class="fa fa-star" aria-hidden="true"></i>  </a>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="member">
-                    <div class="pic"><img src="~/images/oca3.jpg" alt="" style="border-radius: 10%"></div>
-                    <a asp-area="" asp-controller="Home" asp-action="Favoritos">  <i class="fa fa-star" aria-hidden="true"></i>  </a>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="member">
-                    <div class="pic"><img src="~/images/oca4.jpg" alt="" style="border-radius: 10%"></div>
-                    <a asp-area="" asp-controller="Home" asp-action="Favoritos">  <i class="fa fa-star" aria-hidden="true"></i>  </a>
-                </div>
-                <p></p>
-            </div>
-            <div class="row">
-                <div class="col-lg-3 col-md-6">
-                    <div class="member">
-                        <div class="pic"><img src="~/images/oca5.jpg" alt="" style="border-radius: 10%"></div>
-                        <a asp-area="" asp-controller="Home" asp-action="Favoritos">  <i class="fa fa-star" aria-hidden="true"></i>  </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="member">
-                        <div class="pic"><img src="~/images/oca6.jpg" alt="" style="border-radius: 10%"></div>
-                        <a asp-area="" asp-controller="Home" asp-action="Favoritos">  <i class="fa fa-star" aria-hidden="true"></i>  </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="member">
-                        <div class="pic"><img src="~/images/oca7.jpg" alt="" style="border-radius: 10%"></div>
-                        <a asp-area="" asp-controller="Home" asp-action="Favoritos">  <i class="fa fa-star" aria-hidden="true"></i>  </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="member">
-                        <div class="pic"><img src="~/images/oca8.jpg" alt="" style="border-radius: 10%"></div>
-                       <a asp-area="" asp-controller="Home" asp-action="Favoritos">  <i class="fa fa-star" aria-hidden="true"></i>  </a>
-                    </div>
-                </div>
-            </div>
-        </div>
+        }
     </div>
-    </section>
+</section>

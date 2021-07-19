@@ -1,0 +1,41 @@
+﻿@model JuFlores.Models.Favoritos
+
+@{
+    ViewData["Title"] = "Apagar Favorito";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<h3>Tem a certeza que pretende apagar este favorito?</h3>
+<div>
+    <hr />
+    <dl class="row">
+        @if (User.IsInRole("Administrador"))
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Utilizador)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Utilizador.Email)
+            </dd>
+        }
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Data)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Data)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Artigo)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Artigo.Nome)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Apagar" class="btn btn-danger" /> |
+        <a asp-action="Index">Voltar á lista</a>
+    </form>
+</div>

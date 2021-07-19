@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
@@ -11,9 +12,12 @@ namespace JuFlores.Models
     /// </summary>
     public class Favoritos
     {
+        [Key]
+        public int Id { get; set; }
+
         ///fk para os utilziadores 
         [ForeignKey(nameof(Utilizador))]
-        public int UtilizadorFK { get; set; }
+        public string UtilizadorFK { get; set; }
         public Utilizadores Utilizador { get; set; }
 
         public DateTime Data { get; set; }

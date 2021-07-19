@@ -212,9 +212,9 @@ a.navbar-brand {
     }
 
         #team .member .pic {
-            margin-bottom: 15px;
+            margin-bottom: 5px;
             overflow: hidden;
-            height: 380px;
+            height: auto;
         }
 
             #team .member .pic img {

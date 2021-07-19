@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+@*@inject SignInManager<IdentityUser> SignInManager*@
+@inject SignInManager<Utilizadores> SignInManager
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -34,7 +38,18 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Categorias"> Categorias </a>
                         </li>
-
+                        @if (SignInManager.IsSignedIn(User))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="Favoritos" asp-action="Index" title="Favoritos">Favoritos</a>
+                            </li>
+                            @if (User.IsInRole("Administrador") || User.IsInRole("Funcionario"))
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-controller="Home" asp-action="Administracao" title="Administracao">Administração</a>
+                                </li>
+                            }
+                        }
                     </ul>
 
                     <partial name="_LoginPartial" />

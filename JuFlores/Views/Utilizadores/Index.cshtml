@@ -1,0 +1,77 @@
+﻿@model IEnumerable<JuFlores.Models.Utilizadores>
+
+@{
+    ViewData["Title"] = "Lista de utilizadores";
+    List<Microsoft.AspNetCore.Identity.IdentityUserRole<string>> userRoles = (List<Microsoft.AspNetCore.Identity.IdentityUserRole<string>>)ViewData["UserRoles"];
+}
+    <h1>@ViewData["Title"]</h1>
+
+    <p>
+        <a asp-area="Identity" asp-page="/Account/Register">Registar Cliente</a>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nome)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Email)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PhoneNumber)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Morada)
+                </th>
+                <th>
+                    Role
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PhoneNumber)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Morada)
+                    </td>
+                    <td>
+                        @{ 
+                            var role = userRoles.Where(userRole => userRole.UserId == item.Id).FirstOrDefault();
+                            var str = "";
+                            @if (role != null)
+                            {
+                                switch (role.RoleId)
+                                {
+                                    case "a": str += "Administrador ";
+                                        break;
+                                    case "f":
+                                        str += "Funcionário ";
+                                        break;
+                                    case "c":
+                                        str += "Cliente ";
+                                        break;
+                                }
+                            }
+                            @str
+                        } 
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
+                        <a asp-action="Details" asp-route-id="@item.Id">Detalhes</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>

@@ -1,0 +1,91 @@
+﻿@model JuFlores.Models.UtilizadoresInputModel
+
+@{
+    ViewData["Title"] = "Editar utilizador";
+    List<Microsoft.AspNetCore.Identity.IdentityUserRole<string>> userRoles = (List<Microsoft.AspNetCore.Identity.IdentityUserRole<string>>)ViewData["UserRoles"];
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Nome" class="control-label"></label>
+                <input asp-for="Nome" class="form-control" />
+                <span asp-validation-for="Nome" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Morada" class="control-label"></label>
+                <input asp-for="Morada" class="form-control" />
+                <span asp-validation-for="Morada" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NumeroTelefone" class="control-label"></label>
+                <input asp-for="NumeroTelefone" class="form-control" />
+                <span asp-validation-for="NumeroTelefone" class="text-danger"></span>
+            </div>
+            @if (User.IsInRole("Administrador"))
+            {
+                <label asp-for="RoleId" class="control-label"></label>
+                <div class="form-check">
+                    @switch (Model.RoleId)
+                    {
+                        case "c":
+                            <input type="radio" id="cliente" asp-for="RoleId" value="Cliente" class="form-check-input" checked>
+                            <label for="cliente" class="form-check-label">Cliente</label><br>
+                            <input type="radio" id="funcionario" asp-for="RoleId" value="Funcionario" class="form-check-input">
+                            <label for="funcionario" class="form-check-label">Funcionário</label><br>
+                            <input type="radio" id="administrador" asp-for="RoleId" value="Administrador" class="form-check-input">
+                            <label for="administrador" class="form-check-label">Administrador</label><br>
+                            break;
+                        case "f":
+                            <input type="radio" id="cliente" asp-for="RoleId" value="Cliente" class="form-check-input">
+                            <label for="cliente" class="form-check-label">Cliente</label><br>
+                            <input type="radio" id="funcionario" asp-for="RoleId" value="Funcionario" class="form-check-input" checked>
+                            <label for="funcionario" class="form-check-label">Funcionário</label><br>
+                            <input type="radio" id="administrador" asp-for="RoleId" value="Administrador" class="form-check-input">
+                            <label for="administrador" class="form-check-label">Administrador</label><br>
+                            break;
+                        case "a":
+                            <input type="radio" id="cliente" asp-for="RoleId" value="Cliente" class="form-check-input">
+                            <label for="cliente" class="form-check-label">Cliente</label><br>
+                            <input type="radio" id="funcionario" asp-for="RoleId" value="Funcionario" class="form-check-input">
+                            <label for="funcionario" class="form-check-label">Funcionário</label><br>
+                            <input type="radio" id="administrador" asp-for="RoleId" value="Administrador" class="form-check-input" checked>
+                            <label for="administrador" class="form-check-label">Administrador</label><br>
+                            break;
+                        default:
+                            <input type="radio" id="cliente" asp-for="RoleId" value="Cliente" class="form-check-input">
+                            <label for="cliente" class="form-check-label">Cliente</label><br>
+                            <input type="radio" id="funcionario" asp-for="RoleId" value="Funcionario" class="form-check-input">
+                            <label for="funcionario" class="form-check-label">Funcionário</label><br>
+                            <input type="radio" id="administrador" asp-for="RoleId" value="Administrador" class="form-check-input">
+                            <label for="administrador" class="form-check-label">Administrador</label><br>
+                            break;
+                    }
+                    <span asp-validation-for="RoleId" class="text-danger"></span>
+                </div>
+            }
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Voltar à lista</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+                    }

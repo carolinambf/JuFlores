@@ -1,0 +1,60 @@
+﻿@model IEnumerable<JuFlores.Models.Favoritos>
+
+@{
+    ViewData["Title"] = "Lista de Favoritos";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+@if (User.IsInRole("Administrador") || User.IsInRole("Funcionario"))
+{
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+}
+<table class="table">
+    <thead>
+        <tr>
+            @if (User.IsInRole("Administrador") || User.IsInRole("Funcionario"))
+            {
+                <th>
+                    @Html.DisplayNameFor(model => model.Utilizador.Email)
+                </th>
+            }
+            <th>
+                @Html.DisplayNameFor(model => model.Artigo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Data)
+            </th>
+            <th></th>
+         </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            @if (User.IsInRole("Administrador") || User.IsInRole("Funcionario"))
+            {
+                <td>
+                    @Html.DisplayFor(modelItem => item.Utilizador.Email)
+                </td>
+            }
+            <td>
+                @Html.DisplayFor(modelItem => item.Artigo.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Data)
+            </td>
+            <td>
+                @if (User.IsInRole("Administrador") || User.IsInRole("Funcionario"))
+                { 
+                    <a asp-action="Edit" asp-route-id="@item.Id">Editar |</a>
+                    <a asp-action="Details" asp-route-id="@item.Id">Detalhes |</a>
+                }
+                <a asp-action="Delete" asp-route-id="@item.Id">Apagar</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

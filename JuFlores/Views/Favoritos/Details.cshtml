@@ -1,0 +1,48 @@
+﻿@model JuFlores.Models.Favoritos
+
+@{
+    ViewData["Title"] = "Detalhes do Favorito";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div>
+    <h4>Favoritos</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Utilizador)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Utilizador.Id)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Utilizador.Email)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Utilizador.Email)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Data)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Data)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Artigo)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Artigo.Nome)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Artigo.Criador)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Artigo.Criador)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

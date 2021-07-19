@@ -1,0 +1,26 @@
+﻿@{
+    ViewData["Title"] = "Painel de administração";
+}
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<Utilizadores> SignInManager
+
+@*Página Sobre a Loja*@
+<link rel="stylesheet" href="~/css/site.css" />
+<div class="container">
+    <h1>Painel de administração</h1>
+    <div class="list-group">
+        @if (User.IsInRole("Administrador"))
+        {
+            <a class="list-group-item list-group-item-action" asp-controller="Utilizadores" asp-action="Index" title="Clientes">Gerir Clientes</a>
+        }
+        @if (User.IsInRole("Funcionario"))
+        {
+            <a class="list-group-item list-group-item-action" asp-area="Identity" asp-page="/Account/Register" title="Registar Clientes">Registar Cliente</a>
+        }
+        <a class="list-group-item list-group-item-action" asp-controller="Fotografias" asp-action="Index" title="Fotografias">Gerir Fotografias</a>
+        <a class="list-group-item list-group-item-action" asp-controller="Favoritos" asp-action="Index" title="Favoritos">Gerir Favoritos</a>
+        <a class="list-group-item list-group-item-action" asp-controller="Artigos" asp-action="Index" title="Artigos">Gerir Artigos</a>
+        <a class="list-group-item list-group-item-action" asp-controller="Pecas" asp-action="Index" title="Pecas">Gerir Peças</a>
+        <a class="list-group-item list-group-item-action" asp-controller="PecasArtigos" asp-action="Index" title="PecasArtigos">Gerir Peças de Artigos</a>
+    </div>
+</div>
