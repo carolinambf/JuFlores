@@ -13,14 +13,13 @@ namespace JuFlores.Models
         {
         }
 
-        public Pecas(string nome, string tipo, decimal preco, string descricao, int id, ICollection<Fotografias> listaDeFotografias)
+        public Pecas(string nome, string tipo, decimal preco, string descricao, int id)
         {
             Nome = nome;
             Tipo = tipo;
             Preco = preco;
             Descricao = descricao;
             Id = id;
-            ListaDeFotografias = listaDeFotografias;
         }
 
 
@@ -50,10 +49,5 @@ namespace JuFlores.Models
         /// </summary>
         [Key]
         public int Id { get; set; }
-
-
-        //add fotografias 
-        public ICollection<Fotografias> ListaDeFotografias { get; set; } = new List<Fotografias>();
-        //
     }
 }

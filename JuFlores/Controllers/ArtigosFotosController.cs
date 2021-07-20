@@ -7,27 +7,26 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using JuFlores.Data;
 using JuFlores.Models;
-using Microsoft.AspNetCore.Authorization;
 
 namespace JuFlores.Controllers
 {
-    [Authorize(Roles = "Funcionario,Administrador")]
-    public class PecasController : Controller
+    public class ArtigosFotosController : Controller
     {
         private readonly JuFloresDB _context;
 
-        public PecasController(JuFloresDB context)
+        public ArtigosFotosController(JuFloresDB context)
         {
             _context = context;
         }
 
-        // GET: Pecas
+        // GET: ArtigosFotos
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Pecas.ToListAsync());
+            var juFloresDB = _context.ArtigosFotos.Include(a => a.Artigo).Include(a => a.Fotografia);
+            return View(await juFloresDB.ToListAsync());
         }
 
-        // GET: Pecas/Details/5
+        // GET: ArtigosFotos/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -35,41 +34,45 @@ namespace JuFlores.Controllers
                 return NotFound();
             }
 
-            var pecas = await _context.Pecas
+            var artigosFotos = await _context.ArtigosFotos
+                .Include(a => a.Artigo)
+                .Include(a => a.Fotografia)
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (pecas == null)
+            if (artigosFotos == null)
             {
                 return NotFound();
             }
 
-            return View(pecas);
+            return View(artigosFotos);
         }
 
-        // GET: Pecas/Create
+        // GET: ArtigosFotos/Create
         public IActionResult Create()
         {
+            ViewData["ArtigoFk"] = new SelectList(_context.Artigos, "Id", "Nome");
+            ViewData["FotografiaFK"] = new SelectList(_context.Fotografias, "Id", "Fotografia");
             return View();
         }
 
-        // POST: Pecas/Create
+        // POST: ArtigosFotos/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        //public async Task<IActionResult> Create([Bind("Nome,Tipo,Preco,Descricao,Id,ListaDeFotografias")] Pecas pecas)
-        public async Task<IActionResult> Create([Bind("Nome,Tipo,Preco,Descricao,Id,ListaDeFotografias")] PecasViewModel pecas)
+        public async Task<IActionResult> Create([Bind("Id,ArtigoFk,Data,FotografiaFK")] ArtigosFotos artigosFotos)
         {
             if (ModelState.IsValid)
             {
-                Pecas pecasfinal = new(pecas.Nome, pecas.Tipo, pecas.Preco, pecas.Descricao, pecas.Id);
-                _context.Add(pecasfinal);
+                _context.Add(artigosFotos);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(pecas);
+            ViewData["ArtigoFk"] = new SelectList(_context.Artigos, "Id", "Nome", artigosFotos.ArtigoFk);
+            ViewData["FotografiaFK"] = new SelectList(_context.Fotografias, "Id", "Fotografia", artigosFotos.FotografiaFK);
+            return View(artigosFotos);
         }
 
-        // GET: Pecas/Edit/5
+        // GET: ArtigosFotos/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -77,22 +80,24 @@ namespace JuFlores.Controllers
                 return NotFound();
             }
 
-            var pecas = await _context.Pecas.FindAsync(id);
-            if (pecas == null)
+            var artigosFotos = await _context.ArtigosFotos.FindAsync(id);
+            if (artigosFotos == null)
             {
                 return NotFound();
             }
-            return View(pecas);
+            ViewData["ArtigoFk"] = new SelectList(_context.Artigos, "Id", "Nome", artigosFotos.ArtigoFk);
+            ViewData["FotografiaFK"] = new SelectList(_context.Fotografias, "Id", "Fotografia", artigosFotos.FotografiaFK);
+            return View(artigosFotos);
         }
 
-        // POST: Pecas/Edit/5
+        // POST: ArtigosFotos/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Nome,Tipo,Preco,Descricao,Id")] Pecas pecas)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,ArtigoFk,Data,FotografiaFK")] ArtigosFotos artigosFotos)
         {
-            if (id != pecas.Id)
+            if (id != artigosFotos.Id)
             {
                 return NotFound();
             }
@@ -101,12 +106,12 @@ namespace JuFlores.Controllers
             {
                 try
                 {
-                    _context.Update(pecas);
+                    _context.Update(artigosFotos);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!PecasExists(pecas.Id))
+                    if (!ArtigosFotosExists(artigosFotos.Id))
                     {
                         return NotFound();
                     }
@@ -117,10 +122,12 @@ namespace JuFlores.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(pecas);
+            ViewData["ArtigoFk"] = new SelectList(_context.Artigos, "Id", "Nome", artigosFotos.ArtigoFk);
+            ViewData["FotografiaFK"] = new SelectList(_context.Fotografias, "Id", "Fotografia", artigosFotos.FotografiaFK);
+            return View(artigosFotos);
         }
 
-        // GET: Pecas/Delete/5
+        // GET: ArtigosFotos/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -128,30 +135,32 @@ namespace JuFlores.Controllers
                 return NotFound();
             }
 
-            var pecas = await _context.Pecas
+            var artigosFotos = await _context.ArtigosFotos
+                .Include(a => a.Artigo)
+                .Include(a => a.Fotografia)
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (pecas == null)
+            if (artigosFotos == null)
             {
                 return NotFound();
             }
 
-            return View(pecas);
+            return View(artigosFotos);
         }
 
-        // POST: Pecas/Delete/5
+        // POST: ArtigosFotos/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var pecas = await _context.Pecas.FindAsync(id);
-            _context.Pecas.Remove(pecas);
+            var artigosFotos = await _context.ArtigosFotos.FindAsync(id);
+            _context.ArtigosFotos.Remove(artigosFotos);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool PecasExists(int id)
+        private bool ArtigosFotosExists(int id)
         {
-            return _context.Pecas.Any(e => e.Id == id);
+            return _context.ArtigosFotos.Any(e => e.Id == id);
         }
     }
 }

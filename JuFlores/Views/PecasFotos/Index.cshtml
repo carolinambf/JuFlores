@@ -1,4 +1,4 @@
-﻿@model IEnumerable<JuFlores.Models.PecasArtigos>
+﻿@model IEnumerable<JuFlores.Models.PecasFotos>
 
 @{
     ViewData["Title"] = "Index";
@@ -16,10 +16,10 @@
                 @Html.DisplayNameFor(model => model.Peca)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Qtd)
+                @Html.DisplayNameFor(model => model.Data)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Artigo)
+                @Html.DisplayNameFor(model => model.Fotografia)
             </th>
             <th></th>
         </tr>
@@ -31,15 +31,15 @@
                 @Html.DisplayFor(modelItem => item.Peca.Nome)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Qtd)
+                @Html.DisplayFor(modelItem => item.Data)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Artigo.Nome)
+                @Html.DisplayFor(modelItem => item.Fotografia.Fotografia)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.PecaFK">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.PecaFK">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.PecaFK">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
             </td>
         </tr>
 }

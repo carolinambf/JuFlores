@@ -1,0 +1,44 @@
+﻿@{
+    ViewData["Title"] = "Detalhes Artigo";
+    Artigos artigo = (Artigos) ViewData["Artigo"];
+    List<PecasArtigos> pecasArtigo = (List<PecasArtigos>) ViewData["PecasArtigos"];
+    List<PecasFotos> pecasFotos = (List<PecasFotos>) ViewData["PecasFotos"];
+    List<ArtigosFotos> fotosArtigo = (List<ArtigosFotos>)ViewData["fotosArtigo"];
+    decimal preçoTotal = 0;
+}
+
+<h1>@artigo.Nome</h1>
+
+<div>
+    <h4>Feito por @artigo.Criador</h4>
+    <h4>Fotos</h4>
+    @foreach (var fotoArtigo in fotosArtigo)
+    {
+        <img src="@("~/images/" + fotoArtigo.Fotografia.Fotografia)" asp-append-version="true" width="250px" height="auto" />
+
+    }
+    <h4>Peças no artigo</h4>
+    @foreach (var pecaArtigo in pecasArtigo)
+    {
+        @(preçoTotal += (int)pecaArtigo.Qtd * pecaArtigo.Peca.Preco);
+<div class="container">
+    <h5>@pecaArtigo.Peca.Nome</h5>
+    <p>Preço por quantidade: @pecaArtigo.Peca.Preco €</p>
+    <p>Quantidade: @pecaArtigo.Qtd</p>
+    <p>Preço da peça: @((int)pecaArtigo.Qtd * pecaArtigo.Peca.Preco) €</p>
+    <p>@pecaArtigo.Peca.Tipo</p>
+    <dl class="row">
+        <dt class="col-sm-2">
+            Imagem da Peça
+        </dt>
+        <dd class="col-sm-10">
+            <img src="@("~/images/" + pecasFotos.Where(pecaFoto => pecaFoto.PecaFk == pecaArtigo.PecaFK).FirstOrDefault().Fotografia.Fotografia)" asp-append-version="true" width="250px" height="auto" />
+        </dd>
+    </dl>
+</div>
+    }
+    <h4>Preço total do artigo: @preçoTotal €</h4>
+</div>
+<div>
+    <a asp-action="Trabalhos">Voltar à lista</a>
+</div>

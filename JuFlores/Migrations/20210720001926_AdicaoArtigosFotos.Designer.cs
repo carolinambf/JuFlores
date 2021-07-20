@@ -4,14 +4,16 @@ using JuFlores.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace JuFlores.Migrations
 {
     [DbContext(typeof(JuFloresDB))]
-    partial class JuFloresDBModelSnapshot : ModelSnapshot
+    [Migration("20210720001926_AdicaoArtigosFotos")]
+    partial class AdicaoArtigosFotos
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

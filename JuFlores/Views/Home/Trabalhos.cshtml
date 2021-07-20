@@ -1,5 +1,6 @@
 ﻿@{
     ViewData["Title"] = "Últimos Trabalhos";
+    List<ArtigosFotos> fotosArtigo = (List<ArtigosFotos>)ViewData["FotosArtigo"];
 }
 <link rel="stylesheet" href="~/css/site.css" />
 
@@ -19,11 +20,12 @@
     <div class="row">
         @foreach (Artigos artigo in ViewBag.Artigos)
         {
+            var foto = fotosArtigo.FirstOrDefault(fotoArtigo => fotoArtigo.ArtigoFk == artigo.Id);
             IEnumerable<Favoritos> artigosFavoritos = ViewBag.ArtigosFavoritos;
             <div class="col-lg-3 col-md-6">
                 <div class="member">
-                    <div class="pic"><img src="~/images/oca1.jpg" alt="" style="border-radius: 10%"></div>
-                    <h5><a asp-controller="Artigos" asp-action="Details" asp-route-id="@artigo.Id">@artigo.Nome</a></h5>
+                    <div class="pic"><img src="~/images/@(foto != null ? foto.Fotografia.Fotografia : "")" alt="" style="border-radius: 10%"></div>
+                    <h5><a asp-action="TrabalhosDetalhe" asp-route-id="@artigo.Id">@artigo.Nome</a></h5>
                     <form asp-action="Toggle" asp-controller="Favoritos" asp-route-id=@artigo.Id>
                         <button type="submit" value="Fav" style="padding: 0; border: none; background: none;"><i class="fa @(artigosFavoritos.Any(current => current.ArtigoFK == artigo.Id) ? "fa-star" : "fa-star-o")" aria-hidden="true"></i></button>
                     </form>

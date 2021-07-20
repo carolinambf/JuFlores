@@ -49,5 +49,7 @@ namespace JuFlores.Data
         public DbSet<Fotografias> Fotografias { get; set; }
         public DbSet<Favoritos> Favoritos { get; set; }
         public DbSet<PecasArtigos> PecasArtigos { get; set; }
+        public DbSet<JuFlores.Models.PecasFotos> PecasFotos { get; set; }
+        public DbSet<JuFlores.Models.ArtigosFotos> ArtigosFotos { get; set; }
     }
 }

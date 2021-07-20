@@ -63,8 +63,8 @@ namespace JuFlores.Controllers
         [Authorize(Roles = "Funcionario,Administrador")]
         public IActionResult Create()
         {
-            ViewData["ArtigoFK"] = new SelectList(_context.Artigos, "Id", "Criador");
-            ViewData["UtilizadorFK"] = new SelectList(_context.Utilizadores, "Id", "Id");
+            ViewData["ArtigoFK"] = new SelectList(_context.Artigos, "Id", "Nome");
+            ViewData["UtilizadorFK"] = new SelectList(_context.Utilizadores, "Id", "Email");
             ViewData["Utilizadores"] = _context.Utilizadores.ToList();
             return View();
         }
@@ -88,8 +88,8 @@ namespace JuFlores.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ArtigoFK"] = new SelectList(_context.Artigos, "Id", "Criador", favoritos.ArtigoFK);
-            ViewData["UtilizadorFK"] = new SelectList(_context.Utilizadores, "Id", "Id", favoritos.UtilizadorFK);
+            ViewData["ArtigoFK"] = new SelectList(_context.Artigos, "Id", "Nome", favoritos.ArtigoFK);
+            ViewData["UtilizadorFK"] = new SelectList(_context.Utilizadores, "Id", "Email", favoritos.UtilizadorFK);
             return View(favoritos);
         }
 
@@ -145,8 +145,8 @@ namespace JuFlores.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ArtigoFK"] = new SelectList(_context.Artigos, "Id", "Criador", favoritos.ArtigoFK);
-            ViewData["UtilizadorFK"] = new SelectList(_context.Utilizadores, "Id", "Id", favoritos.UtilizadorFK);
+            ViewData["ArtigoFK"] = new SelectList(_context.Artigos, "Id", "Nome", favoritos.ArtigoFK);
+            ViewData["UtilizadorFK"] = new SelectList(_context.Utilizadores, "Id", "Email", favoritos.UtilizadorFK);
             return View(favoritos);
         }
 

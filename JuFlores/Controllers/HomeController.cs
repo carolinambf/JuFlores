@@ -43,8 +43,43 @@ namespace JuFlores.Controllers
         public IActionResult Trabalhos()
         {
             ViewData["Artigos"] = _context.Artigos.ToList();
+            var fotosArtigo = _context.ArtigosFotos
+                .Include(p => p.Fotografia)
+                .ToList();
+            ViewData["FotosArtigo"] = fotosArtigo;
             ViewData["ArtigosFavoritos"] = _context.Favoritos.Include(f => f.Artigo)
                 .Where(favorito => favorito.UtilizadorFK == _context.Utilizadores.Where(utilizador => utilizador.Email == User.Identity.Name).First().Id);
+            return View();
+        }
+        public IActionResult TrabalhosDetalhe(int? id)
+        {
+            var artigo = _context.Artigos.Where(artigo => artigo.Id == id).FirstOrDefault();
+            if(artigo == null)
+            {
+                return NotFound();
+            }
+            ViewData["Artigo"] = artigo;
+            var pecasArtigo = _context.PecasArtigos.Where(pecasArtigos => pecasArtigos.ArtigoFK == artigo.Id)
+                .Include(p => p.Peca)
+                .ToList();
+            ViewData["PecasArtigos"] = pecasArtigo;
+            var fotosArtigo = _context.ArtigosFotos.Where(fotosArt => fotosArt.ArtigoFk == artigo.Id)
+                .Include(p => p.Fotografia)
+                .ToList();
+            ViewData["fotosArtigo"] = fotosArtigo;
+            List<PecasFotos> pecasFotos = new();
+            foreach (var Peca in pecasArtigo)
+            {
+                var fotoPeca = _context.PecasFotos.Where(pecaFoto => pecaFoto.PecaFk == Peca.PecaFK)
+                    .Include(p => p.Fotografia)
+                    .FirstOrDefault(); ;
+                if(fotoPeca != null)
+                {
+                    pecasFotos.Add(fotoPeca);
+                }
+            }
+            ViewData["PecasFotos"] = pecasFotos;
+
             return View();
         }
         public IActionResult Favoritos()

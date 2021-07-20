@@ -4,14 +4,16 @@ using JuFlores.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace JuFlores.Migrations
 {
     [DbContext(typeof(JuFloresDB))]
-    partial class JuFloresDBModelSnapshot : ModelSnapshot
+    [Migration("20210719231737_AdicaoPecasFotos")]
+    partial class AdicaoPecasFotos
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -37,31 +39,6 @@ namespace JuFlores.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Artigos");
-                });
-
-            modelBuilder.Entity("JuFlores.Models.ArtigosFotos", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("ArtigoFk")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("Data")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("FotografiaFK")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ArtigoFk");
-
-                    b.HasIndex("FotografiaFK");
-
-                    b.ToTable("ArtigosFotos");
                 });
 
             modelBuilder.Entity("JuFlores.Models.Favoritos", b =>
@@ -211,21 +188,21 @@ namespace JuFlores.Migrations
                         new
                         {
                             Id = "c",
-                            ConcurrencyStamp = "3275fb16-9ae5-4d2a-8fd7-ca02755646f7",
+                            ConcurrencyStamp = "afe968b3-3fde-4ea5-9602-9b12340cbdb8",
                             Name = "Cliente",
                             NormalizedName = "CLIENTE"
                         },
                         new
                         {
                             Id = "f",
-                            ConcurrencyStamp = "914270d3-5a01-4373-bdb6-09aff89aeaa4",
+                            ConcurrencyStamp = "212f2738-466f-4c52-af4f-3569a11aacd3",
                             Name = "Funcionario",
                             NormalizedName = "FUNCIONARIO"
                         },
                         new
                         {
                             Id = "a",
-                            ConcurrencyStamp = "adcfa539-cf9a-4916-8fe5-10fcc3bb92e1",
+                            ConcurrencyStamp = "d4f6b48c-dc81-411e-b3c6-12ffe94e8356",
                             Name = "Administrador",
                             NormalizedName = "ADMINISTRADOR"
                         });
@@ -424,25 +401,6 @@ namespace JuFlores.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasDiscriminator().HasValue("Utilizadores");
-                });
-
-            modelBuilder.Entity("JuFlores.Models.ArtigosFotos", b =>
-                {
-                    b.HasOne("JuFlores.Models.Artigos", "Artigo")
-                        .WithMany()
-                        .HasForeignKey("ArtigoFk")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("JuFlores.Models.Fotografias", "Fotografia")
-                        .WithMany()
-                        .HasForeignKey("FotografiaFK")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Artigo");
-
-                    b.Navigation("Fotografia");
                 });
 
             modelBuilder.Entity("JuFlores.Models.Favoritos", b =>
