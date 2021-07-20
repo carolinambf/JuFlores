@@ -12,6 +12,7 @@ namespace JuFlores.Models
 
         //primary Key 
         [Key]
+        public int Id { get; set; }
 
         ///fk para os Pecas 
         [ForeignKey(nameof(Peca))]
